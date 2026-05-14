@@ -6,7 +6,6 @@ import './styles.css'
 
 const router = getRouter()
 
-// For GitHub Pages SPA routing support
 if (typeof window !== 'undefined') {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>

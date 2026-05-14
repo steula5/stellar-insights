@@ -52,6 +52,7 @@ export function parseWorkbook(buf: ArrayBuffer, year: number): ParseResult {
   const records: SaleRecord[] = [];
   let hasFamily = false;
   let detectedHeaderRow = -1;
+  let count = 0;
 
   for (const sheetName of wb.SheetNames) {
     const sheet = wb.Sheets[sheetName];
@@ -109,7 +110,7 @@ export function parseWorkbook(buf: ArrayBuffer, year: number): ParseResult {
         const val = parseFloat(String(row[mc.idx] ?? "0").replace(",", "."));
         if (!isNaN(val) && val !== 0) {
           records.push({
-            year: detectedYear,
+            year: year,
             month: mc.month,
             monthIndex: mc.mi,
             item,
